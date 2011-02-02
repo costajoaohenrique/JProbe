@@ -4,20 +4,26 @@
 	<property file="build.properties" />
 	<target name="help">
 		<echo message="Available targets:" />
-		<echo message="init        put dependencies and resources in place" />
 		<echo message="build       compile sources into: ${bin-dir}" />
 		<echo message="distribute  jar binaries into: ${dist-dir}" />
 		<echo message="bundle      bundle into a depoyable web archive: ${bundle.file}" />
 		<echo message="clean       cleanup derivatives" />
 		<echo message="all         cleanup, bundle, and cleanup again" />
 	</target>
-	<target name="build">
+	<target name="init">
+		<condition property="servlet-lib.exists">
+			<available file="${servlet-lib.location}" type="dir" />
+		</condition>
+	</target>
+	<target name="check" depends="init" unless="servlet-lib.exists">
+		<fail message="The servlet-lib directory (${servlet-lib.location}) does not exist, please configure in build.properties." />
+	</target>
+	<target name="build" depends="check">
 		<mkdir dir="${bin-dir}" />
 		<javac fork="${fork}" debug="${debug}" debuglevel="${debuglevel}" destdir="${bin-dir}" source="${source}" target="${target}">
-			<compilerarg value="${compilerarg}" />
 			<src path="${src-dir}" />
 			<classpath>
-				<fileset dir="${servlet-libs.location}" />
+				<fileset dir="${servlet-lib.location}" />
 			</classpath>
 		</javac>
 		<copy includeemptydirs="false" todir="${bin-dir}">
@@ -63,3 +69,4 @@
 		<antcall target="clean" />
 	</target>
 </project>
+
