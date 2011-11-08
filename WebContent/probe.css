@@ -1,5 +1,7 @@
 td {
 	border: 1px solid #aaaaaa;
+	max-width: 200px;
+	word-wrap: break-word;
 }
 
 table {
@@ -28,4 +30,8 @@ td.true {
 
 td.false {
 	background: #ffdddd;
+}
+
+td.stack {
+	max-width: 400px;
 }

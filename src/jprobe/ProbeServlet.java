@@ -212,7 +212,7 @@ public class ProbeServlet extends HttpServlet {
 		printWriter.write("<td>Deamon</td>");
 		printWriter.write("<td>Destroyed / Interrupted</td>");
 		printWriter.write("<td>Accessible</td>");
-		printWriter.write("<td>Stack</td>");
+		printWriter.write("<td class=\"stack\">Stack</td>");
 		printWriter.write("<td>Details</td>");
 		if (allowInterrupt) {
 			printWriter.write("<td>Action</td>");
@@ -286,7 +286,7 @@ public class ProbeServlet extends HttpServlet {
 		printWriter.write("<td class=\"" + thread.isDaemon() + "\">" + thread.isDaemon() + "</td>");
 		printWriter.write("<td class=\"" + thread.isInterrupted() + "\">" + thread.isInterrupted() + "</td>");
 		printWriter.write("<td class=\"" + thread.isAccessible() + "\">" + thread.isAccessible() + "</td>");
-		printWriter.write("<td>");
+		printWriter.write("<td class=\"stack\">");
 		if (trace.length > 0) {
 			int index = 0;
 			for (TimedStackTraceElement e : trace) {
