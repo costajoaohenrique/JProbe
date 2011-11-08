@@ -15,8 +15,12 @@ The minimum configuration required is setting the `servlet-libs.location` proper
 
 A war (Web ARchive) file can be bundled by running: `ant all`
 
+*The default password is 's3cr3t' and should be set to a secure password in web.xml before deployment in a production environment.*
+
 License
 -------
 JProbe is licensed under the terms of the Apache License version 2.0, see the included LICENSE file.
 
-
+Author
+------
+[Leonard van Driel](http://www.leonardvandriel.nl/)
